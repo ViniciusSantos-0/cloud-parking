@@ -1,6 +1,7 @@
-package com.empresa.cloudparking.controller;
+package com.empresa.cloudparking.mapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class ParkingMapper {
         return MODEL_MAPPER.map(parking, ParkingDTO.class);
     }
     
-    public List<ParkingDTO> toParkingDTOList(List<Parking> parklingList){
-        return null;
+    public List<ParkingDTO> toParkingDTOList(List<Parking> parkingList){
+        return parkingList.stream().map(this::parkingDTO).collect(Collectors.toList());
     };
 }
